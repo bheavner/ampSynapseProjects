@@ -1,0 +1,9 @@
+
+1. process raw data
+ - data enablement reformatting
+ - SNAPR run, merging, etc.
+
+2. RNA-seq: normalize
+
+3. differential expression analysis
+
