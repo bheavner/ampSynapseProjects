@@ -7,7 +7,7 @@ library(edgeR)
 #Login to Synapse using credentials saved in .synapseConfig file
 synapseLogin()
 
-codeFile <- ("https://github.com/bheavner/ampSynapseProjects/rnaseqAnalysis/normalize_readcounts.R")
+codeFile <- ("https://github.com/bheavner/ampSynapseProjects/blob/master/rnaseqAnalysis/normalize_readcounts.R")
 
 # The files for the first batch are:
 
