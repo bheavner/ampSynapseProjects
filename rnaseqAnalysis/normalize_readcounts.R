@@ -13,16 +13,16 @@ codeFile <- ("https://github.com/bheavner/ampSynapseProjects/blob/master/rnaseqA
 
 # The files for the first batch are:
 
-# ad_pilot_rnaseq_gene_id_counts.txt.gz ('syn3160436')
-# ad_pilot_rnaseq_transcript_id_counts.txt.gz ('syn3160437')
+# ad_pilot_rnaseq_gene_id_counts_transposed.txt.gz ('syn3191070')
+# ad_pilot_rnaseq_transcript_id_counts_transposed.txt.gz ('syn3191083')
 
-# psp_pilot_rnaseq_gene_id_counts.txt.gz ('syn3160443')
-# psp_pilot_rnaseq_transcript_id_counts.txt.gz ('syn3160444')
+# psp_pilot_rnaseq_gene_id_counts_transposed.txt.gz ('syn3191085')
+# psp_pilot_rnaseq_transcript_id_counts_transposed.txt.gz ('syn3191122')
 
-# mouse_tau_rnaseq_gene_id_counts.txt.gz ('syn3160706')
-# mouse_tau_rnaseq_transcript_id_counts.txt.gz ('syn3160709')
+# mouse_tau_rnaseq_gene_id_counts_transposed.txt.gz ('syn3192634')
+# mouse_tau_rnaseq_transcript_id_counts_transposed.txt.gz ('syn3192651')
 
-#countFileSynapseIDs <- c('syn3160436', 'syn3160437', 'syn3160443', 'syn3160444', 'syn3160706', 'syn3160709' )
+countFileSynapseIDs <- c('syn3191070', 'syn3191083', 'syn3191085', 'syn3191122', 'syn3192634', 'syn3192651')
 
 for (mergedCountFile in countFileSynapseIDs) {
     message("Normalizing ", mergedCountFile)
@@ -41,9 +41,6 @@ for (mergedCountFile in countFileSynapseIDs) {
 
     rawCounts <- read.table(localFilePath, header = TRUE)
 
-    # begin processing - first transpose b/c James did it differently than DGEList expects
-    transposedCounts <- t(rawCounts)
-
     # make DGEList object
     expr <- DGEList(transposedCounts, group = rep(1, ncol(transposedCounts)))
 
@@ -58,7 +55,7 @@ for (mergedCountFile in countFileSynapseIDs) {
 
     # write the data to local dir
 
-    newFileName <- sub('.txt.gz', '', originalCountFile$properties$name)
+    newFileName <- sub('_transposed.txt.gz', '', originalCountFile$properties$name)
     newFileName <- paste0(newFileName, "_normalized.txt", sep="")
 
     write.table(normalizedCpm, newFileName, quote = FALSE, sep = "\t", row.names = TRUE)
