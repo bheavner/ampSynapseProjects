@@ -66,7 +66,8 @@ for (dataset in list(adCountFileSynapseIDs, pspCountFileSynapseIDs, mouseCountFi
 
         # write the data to local dir
 
-        newFileName <- sub('.gz', '', originalCountFile$properties$name)
+        newFileName <- sub('.txt.gz', '', originalCountFile$properties$name)
+        newFileName <- paste0(newFileName, "_transposed.txt", sep="")
 
         write.table(transposedCounts, newFileName, quote = FALSE, sep = "\t", row.names = TRUE)
 
