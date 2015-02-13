@@ -9,7 +9,7 @@ library(edgeR)
 #Login to Synapse using credentials saved in .synapseConfig file
 synapseLogin()
 
-codeFile <- ("https://github.com/bheavner/ampSynapseProjects/blob/master/rnaseqAnalysis/normalize_readcounts.R")
+codeFile <- ("https://github.com/bheavner/ampSynapseProjects/blob/6be715aaeae98c6ecc4afcc3b01fd7c9399c7085/rnaseqAnalysis/normalize_readcounts.R")
 
 # The files for the first batch are:
 
@@ -39,7 +39,7 @@ for (mergedCountFile in countFileSynapseIDs) {
 
     localFilePath <- sub('.gz', '', localFilePath) #trim the .gz suffix
 
-    rawCounts <- read.table(localFilePath, header = TRUE)
+    transposedCounts <- read.table(localFilePath, header = TRUE)
 
     # make DGEList object
     expr <- DGEList(transposedCounts, group = rep(1, ncol(transposedCounts)))
