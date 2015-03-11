@@ -25,7 +25,9 @@ unzip(tau_files_path, exdir = tmpDir)
 inputDir <- file.path(tmpDir, fileDir)
 prefix <- "mouse_tau_rnaseq"
 
-countTypes <- c("gene_name", "gene_id", "transcript_id")
+countTypes <- c("gene_id", "transcript_id")
+
+codeFile <- ("https://github.com/jaeddy/ampSynapseProjects/blob/v0.1-alpha/dataEnablement/R/merge_mouse_tau_rnaseq_counts.R")
 
 for (countType in countTypes) {
     message(paste("Merging", prefix, "files of count type", countType, "..."))
@@ -35,10 +37,12 @@ for (countType in countTypes) {
     
     # Create a Synapse object for the output file and upload
     merged_file_object <- File(path = merged_file, 
-                               parentId = tau_count_files$properties$parentId)
+                               parentId = tau_count_files$properties$parentId,
+                               activityName = "SNAPR output processing", 
+                               used = list(list(name = "SNAPR_tools", 
+                                                url = codeFile,
+                                                wasExecuted = T)))
     merged_file_object <- synStore(merged_file_object)
 }
 
 unlink(inputDir, recursive = TRUE)
-
-

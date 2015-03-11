@@ -22,8 +22,8 @@ codeFile <- ("https://github.com/bheavner/ampSynapseProjects/blob/90d5c0194a2f42
 # mouse_tau_rnaseq_gene_id_counts.txt.gz ('syn3160706')
 # mouse_tau_rnaseq_transcript_id_counts.txt.gz ('syn3160709')
 
-adCountFileSynapseIDs <- c('syn3160436', 'syn3160437')
-pspCountFileSynapseIDs <- c('syn3160443', 'syn3160444')
+adCountFileSynapseIDs <- c()#'syn3160436', 'syn3160437')
+pspCountFileSynapseIDs <- c()#'syn3160443', 'syn3160444')
 mouseCountFileSynapseIDs <- c('syn3160706', 'syn3160709')
 
 # samples to exclude for QC reasons:

@@ -7,13 +7,13 @@ library(tools)
 source("dataEnablement/R/merge_count_files.R")
 
 # point to specific version run
-codeFile <- ("https://github.com/bheavner/ampSynapseProjects/blob/90d5c0194a2f42615eda55431355073813103741/rnaseqAnalysis/reformat_merged_readcounts.R")
+codeFile <- ("https://github.com/bheavner/ampSynapseProjects/blob/eb198e01b658c3ee2d58be414a23504bedbb0c31/dataEnablement/R/merge_mouse_app_rnaseq_counts.R")
 
 # Login to Synapse using credentials saved in .synapseConfig file
 synapseLogin()
 
 # Define paths for required Synapse objects
-app_rnaseq_counts <- #"syn2875347" # all count files in a zipped directory
+app_rnaseq_counts <- "syn2875347" # all count files in a zipped directory
 
 # Download files from Synapse
 app_count_files <- synGet(app_rnaseq_counts)
@@ -44,9 +44,7 @@ for (countType in countTypes) {
                                    used=list(list(name = "merge_mouse_app_rnaseq_counts.R",
                                                   url = codeFile, wasExecuted = T),
                                              list(entity=originalCountFile,
-                                                  wasExecuted=F))))
+                                                  wasExecuted=F)))
 }
 
 unlink(inputDir, recursive = TRUE)
-
-

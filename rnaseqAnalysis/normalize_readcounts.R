@@ -9,7 +9,7 @@ library(edgeR)
 #Login to Synapse using credentials saved in .synapseConfig file
 synapseLogin()
 
-codeFile <- ("https://github.com/bheavner/ampSynapseProjects/blob/6be715aaeae98c6ecc4afcc3b01fd7c9399c7085/rnaseqAnalysis/normalize_readcounts.R")
+codeFile <- ("https://github.com/bheavner/ampSynapseProjects/blob/5c2fea4f6c4930e623df97eef96e6b0224aaeec1/rnaseqAnalysis/normalize_readcounts.R")
 
 # The files for the first batch are:
 
@@ -22,7 +22,7 @@ codeFile <- ("https://github.com/bheavner/ampSynapseProjects/blob/6be715aaeae98c
 # mouse_tau_rnaseq_gene_id_counts_transposed.txt.gz ('syn3192634')
 # mouse_tau_rnaseq_transcript_id_counts_transposed.txt.gz ('syn3192651')
 
-countFileSynapseIDs <- c('syn3191070', 'syn3191083', 'syn3191085', 'syn3191122', 'syn3192634', 'syn3192651')
+countFileSynapseIDs <- c('syn3192634', 'syn3192651')#'syn3191070', 'syn3191083', 'syn3191085', 'syn3191122', 'syn3192634', 'syn3192651')
 
 for (mergedCountFile in countFileSynapseIDs) {
     message("Normalizing ", mergedCountFile)
